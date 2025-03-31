@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx
+        resources:
+          requests:
+            cpu: "100m"      # Minimum amount of CPU that the container will get
+            memory: "200Mi"   # Minimum amount of memory that the container will get
+          limits:
+            cpu: "200m"       # Maximum amount of CPU that the container can use
+            memory: "400Mi"    # Maximum amount of memory that the container can use
+
